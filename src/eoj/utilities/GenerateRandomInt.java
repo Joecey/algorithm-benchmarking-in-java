@@ -6,7 +6,7 @@ public class GenerateRandomInt {
         int[] newRandomIntArray = new int[arraySize];
 
         for (int idx = 0; idx < arraySize; idx++) {
-            int random = (int) (Math.random() * (arraySize * 5) + 1);
+            int random = (int) (Math.random() * (arraySize * 5));
             newRandomIntArray[idx] = random;
         }
         return newRandomIntArray;
