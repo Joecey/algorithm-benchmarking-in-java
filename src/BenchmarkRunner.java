@@ -2,7 +2,6 @@ import eoj.algos.BubbleSort;
 import eoj.utilities.GenerateRandomInt;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class BenchmarkRunner {
     public static void main(String[] args) {
