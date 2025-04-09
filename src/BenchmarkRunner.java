@@ -9,10 +9,11 @@ public class BenchmarkRunner {
         System.out.println("~~~ Algorithm Benchmarking Assignment - Joe Linogao ~~~");
         BubbleSort bubbleSortAlgo = new BubbleSort();
 
-        int[] testList = GenerateRandomInt.randomArray(10);
+        int[] testList = GenerateRandomInt.randomArray(20);
+        System.out.println("To start: " + Arrays.toString(testList));
 
         int[] sortedList = bubbleSortAlgo.sortIntegerArray(testList);
-        System.out.println(Arrays.toString(sortedList));
+        System.out.println("After bubble sort:" + Arrays.toString(sortedList));
 
     }
 }
