@@ -1,5 +1,6 @@
 import eoj.algos.BubbleSort;
 import eoj.utilities.GenerateRandomInt;
+import eoj.utilities.PrintTableRow;
 
 import java.util.Arrays;
 
@@ -15,9 +16,15 @@ public class BenchmarkRunner {
         int[] sortedList = bubbleSortAlgo.sortIntegerArray(testList);
         System.out.println("After bubble sort:" + Arrays.toString(sortedList));
 
-        PrintTableRow.displayRow("hi", "test", "test", "test", "test",
+
+        // After we get our results, print it to the console as shown
+        PrintTableRow.displayRow("Bubble", new String[]{"test", "test", "test", "test",
                 "test", "test", "test", "test", "test", "test",
-                "test", "test", "test");
+                "test", "test", "test"});
+
+
+
+        // TODO: Generate results as .csv
 
     }
 }
