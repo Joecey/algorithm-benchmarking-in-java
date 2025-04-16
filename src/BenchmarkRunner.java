@@ -1,12 +1,9 @@
 import eoj.algos.BubbleSort;
 import eoj.algos.ISorterForIntegers;
-import eoj.utilities.GenerateRandomInt;
 import eoj.utilities.PrintTableRow;
 import eoj.utilities.TimeAlgorithm10Average;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
