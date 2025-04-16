@@ -1,27 +1,52 @@
 import eoj.algos.BubbleSort;
+import eoj.algos.ISorterForIntegers;
 import eoj.utilities.GenerateRandomInt;
 import eoj.utilities.PrintTableRow;
+import eoj.utilities.TimeAlgorithm10Average;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class BenchmarkRunner {
     public static void main(String[] args) {
 
         System.out.println("~~~ Algorithm Benchmarking Assignment - Joe Linogao ~~~");
-        BubbleSort bubbleSortAlgo = new BubbleSort();
+        // Get user input for all n values you would like
+        Scanner newScanner = new Scanner(System.in);
 
-        int[] testList = GenerateRandomInt.randomArray(20);
-        System.out.println("To start: " + Arrays.toString(testList));
+        // e.g. 10, 100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000
+        System.out.print("Enter array sizes you would like to test (e.g. 5, 10, 1000, 2500): ");
+        String nValues = newScanner.nextLine();
 
-        int[] sortedList = bubbleSortAlgo.sortIntegerArray(testList);
-        System.out.println("After bubble sort:" + Arrays.toString(sortedList));
+        // split array by delimiter then process each to ensure that they are all valid integers
+        String[] nValuesArray = nValues.replaceAll("\\s+","").split(",");
+        List<Integer> nValuesArrayInt = new ArrayList<Integer>();
 
+        for (String nValue:nValuesArray){
+            try {
+                nValuesArrayInt.add(Integer.parseInt(nValue));
+            } catch (Exception err){
+                System.out.format("ERROR: %s - exiting program... \n", err.getMessage());
+                System.exit(-1);
+            }
+        }
+
+        // create our new algorithm classes
+        ISorterForIntegers bubbleSortAlgo = new BubbleSort();
+
+        // create our benchmark generator class then process all our algorithms
+        System.out.println("Running benchmarks... this will take some time...");
+        TimeAlgorithm10Average benchmarkResultsGenerator = new TimeAlgorithm10Average(nValuesArrayInt, nValuesArray);
+        benchmarkResultsGenerator.generateResultsWithAlgo("bubble", bubbleSortAlgo);
 
         // After we get our results, print it to the console as shown
-        PrintTableRow.displayRow("Bubble", new String[]{"test", "test", "test", "test",
-                "test", "test", "test", "test", "test", "test",
-                "test", "test", "test"});
-
+        // loop through our results hashmap, printing a new row for each key
+        System.out.println("Note: Results are displayed in milliseconds");
+        PrintTableRow.displayRow("Algorithms", benchmarkResultsGenerator.getNValuesStringArray());
+        PrintTableRow.displayRow("bubble", benchmarkResultsGenerator.getAlgoResultsMap().get("bubble"));
 
 
         // TODO: Generate results as .csv

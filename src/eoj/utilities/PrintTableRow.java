@@ -10,8 +10,8 @@ public class PrintTableRow {
      */
     public static <String> void displayRow(String leftMostColumn, String[] dataArray) {
 
-        System.out.format("%-10s",leftMostColumn);
-        for (String dataPoint: dataArray) System.out.printf("%-10s", dataPoint);
+        System.out.format("%-12s",leftMostColumn);
+        for (String dataPoint: dataArray) System.out.printf("%-14s", dataPoint);
         System.out.println();
 
     }
