@@ -15,5 +15,9 @@ public class BenchmarkRunner {
         int[] sortedList = bubbleSortAlgo.sortIntegerArray(testList);
         System.out.println("After bubble sort:" + Arrays.toString(sortedList));
 
+        PrintTableRow.displayRow("hi", "test", "test", "test", "test",
+                "test", "test", "test", "test", "test", "test",
+                "test", "test", "test");
+
     }
 }
