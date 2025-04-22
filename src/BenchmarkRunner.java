@@ -1,5 +1,7 @@
 import eoj.algos.BubbleSort;
 import eoj.algos.ISorterForIntegers;
+import eoj.algos.InsertionSort;
+import eoj.algos.SelectionSort;
 import eoj.utilities.PrintTableRow;
 import eoj.utilities.TimeAlgorithm10Average;
 
@@ -19,13 +21,13 @@ public class BenchmarkRunner {
         String nValues = newScanner.nextLine();
 
         // split array by delimiter then process each to ensure that they are all valid integers
-        String[] nValuesArray = nValues.replaceAll("\\s+","").split(",");
+        String[] nValuesArray = nValues.replaceAll("\\s+", "").split(",");
         List<Integer> nValuesArrayInt = new ArrayList<Integer>();
 
-        for (String nValue:nValuesArray){
+        for (String nValue : nValuesArray) {
             try {
                 nValuesArrayInt.add(Integer.parseInt(nValue));
-            } catch (Exception err){
+            } catch (Exception err) {
                 System.out.format("ERROR: %s - exiting program... \n", err.getMessage());
                 System.exit(-1);
             }
@@ -33,17 +35,24 @@ public class BenchmarkRunner {
 
         // create our new algorithm classes
         ISorterForIntegers bubbleSortAlgo = new BubbleSort();
+        ISorterForIntegers insertionSortAlgo = new InsertionSort();
+        ISorterForIntegers selectionSortAlgo = new SelectionSort();
+
 
         // create our benchmark generator class then process all our algorithms
         System.out.println("Running benchmarks... this will take some time...");
         TimeAlgorithm10Average benchmarkResultsGenerator = new TimeAlgorithm10Average(nValuesArrayInt, nValuesArray);
         benchmarkResultsGenerator.generateResultsWithAlgo("bubble", bubbleSortAlgo);
+        benchmarkResultsGenerator.generateResultsWithAlgo("insertion", insertionSortAlgo);
+        benchmarkResultsGenerator.generateResultsWithAlgo("selection", selectionSortAlgo);
 
         // After we get our results, print it to the console as shown
         // loop through our results hashmap, printing a new row for each key
         System.out.println("Note: Results are displayed in milliseconds");
         PrintTableRow.displayRow("Algorithms", benchmarkResultsGenerator.getNValuesStringArray());
         PrintTableRow.displayRow("bubble", benchmarkResultsGenerator.getAlgoResultsMap().get("bubble"));
+        PrintTableRow.displayRow("insertion", benchmarkResultsGenerator.getAlgoResultsMap().get("insertion"));
+        PrintTableRow.displayRow("selection", benchmarkResultsGenerator.getAlgoResultsMap().get("selection"));
 
 
         // TODO: Generate results as .csv
