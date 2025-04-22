@@ -7,5 +7,8 @@ public class MergeSort implements ISorterForIntegers{
         return array;
     }
 
-    // TODO: here we can just implement the sorting method here
+    /*
+     * This is an example of a RECURSIVE COMPARISON SORT
+     */
+
 }

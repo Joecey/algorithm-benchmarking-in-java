@@ -1,7 +1,4 @@
-import eoj.algos.BubbleSort;
-import eoj.algos.ISorterForIntegers;
-import eoj.algos.InsertionSort;
-import eoj.algos.SelectionSort;
+import eoj.algos.*;
 import eoj.utilities.PrintTableRow;
 import eoj.utilities.TimeAlgorithm10Average;
 
@@ -37,6 +34,7 @@ public class BenchmarkRunner {
         ISorterForIntegers bubbleSortAlgo = new BubbleSort();
         ISorterForIntegers insertionSortAlgo = new InsertionSort();
         ISorterForIntegers selectionSortAlgo = new SelectionSort();
+        ISorterForIntegers countingSortAlgo = new CountingSort();
 
 
         // create our benchmark generator class then process all our algorithms
@@ -45,6 +43,7 @@ public class BenchmarkRunner {
         benchmarkResultsGenerator.generateResultsWithAlgo("bubble", bubbleSortAlgo);
         benchmarkResultsGenerator.generateResultsWithAlgo("insertion", insertionSortAlgo);
         benchmarkResultsGenerator.generateResultsWithAlgo("selection", selectionSortAlgo);
+        benchmarkResultsGenerator.generateResultsWithAlgo("counting", countingSortAlgo);
 
         // After we get our results, print it to the console as shown
         // loop through our results hashmap, printing a new row for each key
@@ -53,6 +52,7 @@ public class BenchmarkRunner {
         PrintTableRow.displayRow("bubble", benchmarkResultsGenerator.getAlgoResultsMap().get("bubble"));
         PrintTableRow.displayRow("insertion", benchmarkResultsGenerator.getAlgoResultsMap().get("insertion"));
         PrintTableRow.displayRow("selection", benchmarkResultsGenerator.getAlgoResultsMap().get("selection"));
+        PrintTableRow.displayRow("counting", benchmarkResultsGenerator.getAlgoResultsMap().get("counting"));
 
 
         // TODO: Generate results as .csv
