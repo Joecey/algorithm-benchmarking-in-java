@@ -35,6 +35,7 @@ public class BenchmarkRunner {
         ISorterForIntegers insertionSortAlgo = new InsertionSort();
         ISorterForIntegers selectionSortAlgo = new SelectionSort();
         ISorterForIntegers countingSortAlgo = new CountingSort();
+        ISorterForIntegers mergeSortAlgo = new MergeSort();
 
 
         // create our benchmark generator class then process all our algorithms
@@ -44,6 +45,7 @@ public class BenchmarkRunner {
         benchmarkResultsGenerator.generateResultsWithAlgo("insertion", insertionSortAlgo);
         benchmarkResultsGenerator.generateResultsWithAlgo("selection", selectionSortAlgo);
         benchmarkResultsGenerator.generateResultsWithAlgo("counting", countingSortAlgo);
+        benchmarkResultsGenerator.generateResultsWithAlgo("merge", mergeSortAlgo);
 
         // After we get our results, print it to the console as shown
         // loop through our results hashmap, printing a new row for each key
@@ -53,9 +55,8 @@ public class BenchmarkRunner {
         PrintTableRow.displayRow("insertion", benchmarkResultsGenerator.getAlgoResultsMap().get("insertion"));
         PrintTableRow.displayRow("selection", benchmarkResultsGenerator.getAlgoResultsMap().get("selection"));
         PrintTableRow.displayRow("counting", benchmarkResultsGenerator.getAlgoResultsMap().get("counting"));
+        PrintTableRow.displayRow("merge", benchmarkResultsGenerator.getAlgoResultsMap().get("merge"));
 
-
-        // TODO: Generate results as .csv
 
     }
 }
