@@ -1,13 +1,13 @@
 import eoj.algos.*;
+import eoj.utilities.GenerateResultsCSV;
 import eoj.utilities.PrintTableRow;
 import eoj.utilities.TimeAlgorithm10Average;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 public class BenchmarkRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.out.println("~~~ Algorithm Benchmarking Assignment - Joe Linogao ~~~");
         // Get user input for all n values you would like
@@ -16,6 +16,9 @@ public class BenchmarkRunner {
         // e.g. 10, 100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000
         System.out.print("Enter array sizes you would like to test (e.g. 5, 10, 1000, 2500): ");
         String nValues = newScanner.nextLine();
+        System.out.print("Would you like to generate a .csv file of your results (y/N)?: ");
+        String generateCSVInput = newScanner.nextLine();
+        boolean generateCSV = Objects.equals(generateCSVInput, "y") || Objects.equals(generateCSVInput, "Y");
 
         // split array by delimiter then process each to ensure that they are all valid integers
         String[] nValuesArray = nValues.replaceAll("\\s+", "").split(",");
@@ -57,6 +60,22 @@ public class BenchmarkRunner {
         PrintTableRow.displayRow("counting", benchmarkResultsGenerator.getAlgoResultsMap().get("counting"));
         PrintTableRow.displayRow("merge", benchmarkResultsGenerator.getAlgoResultsMap().get("merge"));
 
+        if (generateCSV) {
+            System.out.println("Generating .csv file of results...");
+            // create list of rows
+            List<String[]> dataLines = new ArrayList<>();
+            dataLines.add(GenerateResultsCSV.combineKeyAndArray("algorithms", benchmarkResultsGenerator.getNValuesStringArray()));
+
+            for (Map.Entry<String, String[]> algoResultEntry : benchmarkResultsGenerator.getAlgoResultsMap().entrySet()) {
+                dataLines.add(
+                        GenerateResultsCSV.combineKeyAndArray(algoResultEntry.getKey(), algoResultEntry.getValue())
+                );
+            }
+
+            // after creating our dataLines, we can now generate our CSV
+            GenerateResultsCSV.createResultsCSV(dataLines);
+
+        }
 
     }
 }

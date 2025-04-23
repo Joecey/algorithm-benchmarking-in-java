@@ -43,6 +43,7 @@ public class MergeSort implements ISorterForIntegers {
         // 1. [3, 2, 5, 4] - split
         // 3. [3, 2] - split
         // 11. [5,4] - split
+        // note, copy of range is exclusive of the end point
         int[] leftArray = Arrays.copyOfRange(array, 0, mid);
         int[] rightArray = Arrays.copyOfRange(array, mid, array.length - 1);
 
