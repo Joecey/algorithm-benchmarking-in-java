@@ -19,6 +19,10 @@ public class GenerateResultsCSV {
 
     public static void createResultsCSV(List<String[]> dataLines) throws IOException {
         File csvResultsFile = new File(CSV_FILE_NAME);
+        if (csvResultsFile.exists()){
+            boolean result = csvResultsFile.delete();
+            if (result) System.out.println("Overwriting existing results file...");
+        }
         try (PrintWriter pw = new PrintWriter(csvResultsFile)) {
             dataLines.stream()
                     .map(GenerateResultsCSV::convertToCSV)

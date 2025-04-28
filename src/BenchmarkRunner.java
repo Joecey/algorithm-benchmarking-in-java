@@ -53,7 +53,7 @@ public class BenchmarkRunner {
         // After we get our results, print it to the console as shown
         // loop through our results hashmap, printing a new row for each key
         System.out.println("Note: Results are displayed in milliseconds");
-        PrintTableRow.displayRow("Sizes", benchmarkResultsGenerator.getNValuesStringArray());
+        PrintTableRow.displayRow("sizes", benchmarkResultsGenerator.getNValuesStringArray());
         PrintTableRow.displayRow("bubble", benchmarkResultsGenerator.getAlgoResultsMap().get("bubble"));
         PrintTableRow.displayRow("insertion", benchmarkResultsGenerator.getAlgoResultsMap().get("insertion"));
         PrintTableRow.displayRow("selection", benchmarkResultsGenerator.getAlgoResultsMap().get("selection"));
@@ -64,7 +64,7 @@ public class BenchmarkRunner {
             System.out.println("Generating .csv file of results...");
             // create list of rows
             List<String[]> dataLines = new ArrayList<>();
-            dataLines.add(GenerateResultsCSV.combineKeyAndArray("algorithms", benchmarkResultsGenerator.getNValuesStringArray()));
+            dataLines.add(GenerateResultsCSV.combineKeyAndArray("sizes", benchmarkResultsGenerator.getNValuesStringArray()));
 
             for (Map.Entry<String, String[]> algoResultEntry : benchmarkResultsGenerator.getAlgoResultsMap().entrySet()) {
                 dataLines.add(
