@@ -13,5 +13,5 @@ every array size the user has requested. The algorithms currently implemented ar
 ## Running the program
 Note that this project requires JDK 21 or higher to run. To run the program...
 1. Clone this repository to your local machine
-2. Compile and run `BenchmarkRunner`
+2. Compile and run `src/BenchmarkRunner.java`
 3. Follow the instructions shown in the terminal
