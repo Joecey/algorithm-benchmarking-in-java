@@ -15,3 +15,10 @@ Note that this project requires JDK 21 or higher to run. To run the program...
 1. Clone this repository to your local machine
 2. Compile and run `src/BenchmarkRunner.java`
 3. Follow the instructions shown in the terminal
+
+### How to run program from jar file
+When running this program you have two options:
+1) Run the included .jar file using `java -cp ./algorithm-benchmarking-in-java.jar BenchmarkRunner` to begin the program
+
+The steps I used to generate a `.jar` artefact in Intellij can be found
+[here](https://stackoverflow.com/questions/2025607/how-to-create-a-jar-file-or-export-jar-in-intellij-idea-like-eclipse-java-arch)
